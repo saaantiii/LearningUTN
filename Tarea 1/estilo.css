@@ -67,10 +67,12 @@ main{
     margin: auto;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     border-style: solid;
+    overflow: hidden;
 }
 
 .tituloSecundario1 {
     width:48%;
+    display: inline-block;
     height: 48%;
     margin: auto;
     margin-bottom: 10px;
@@ -81,6 +83,7 @@ main{
 
 .tituloSecundario2{
     width:48%;
+    display: inline-block;
     height: 48%;
     margin: auto;
     margin-bottom: 10px;
@@ -91,6 +94,7 @@ main{
 
 .tituloSecundario3{
     width:48%;
+    display: -moz-inline-box;
     height: 48%;
     margin: auto;
     margin-bottom: 10px;
@@ -101,6 +105,7 @@ main{
 
 .tituloSecundario4{
     width: 48%;
+    display: inline-block;
     height: 48%;
     margin: auto;
     margin-bottom: 10px;
