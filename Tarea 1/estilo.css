@@ -93,7 +93,7 @@ main{
 
 .tituloSecundario3{
     width:48%;
-    display: -moz-inline-box;
+    display: inline-box;
     height: 48%;
     margin: auto;
     margin-bottom: 10px;
