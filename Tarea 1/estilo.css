@@ -95,6 +95,7 @@ main{
     width:48%;
     display: inline-box;
     height: 48%;
+    justify-content: 
     margin: auto;
     margin-bottom: 10px;
     float: left;
@@ -120,4 +121,8 @@ footer{
     position: relative;
     clear: both;
     font-size: 150%;
+}
+
+@media screen (min-width:660px) and (max-width:1200px) {
+    
 }
