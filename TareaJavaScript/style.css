@@ -1,0 +1,28 @@
+body {
+    display: flex;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #F5F5F5;
+}
+
+html, body {
+    height: 100%;   
+}
+.form-container { 
+    text-align: center;
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+    background-color: #E2E2E2;;
+}
+.titulo {
+    padding-bottom: 20px;
+}
+.my-buttom {
+    margin: 20px 0;
+}
+#recuerdame {
+    float: none;
+}
