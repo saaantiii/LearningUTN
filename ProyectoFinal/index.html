@@ -11,20 +11,28 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <!-- CSS personal -->
     <link rel="stylesheet" href="css/style.css">
-
+    <!-- CSS W3schools -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <!-- Fuente Google -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Allerta+Stencil">
 </head>
 <body class="d-flex flex-row">
-    <div>
-        <aside id class="d-flex sticky-top text-white bg-dark p-3 navbar-nav" style="width: 310px;">
-            <a class="d-flex text-white text-decoration-none" href="index.html"><img width="260" height="300" src="images/escudo.png" alt="CIBERDEFA-Logo"></a>
-            <div class="fs-4">Dirección de Ciberdefensa</div>
-            <hr>
-            <ul class="nav flex-column">
-                <li><a class="nav-link text-white" href="index.html">Inicio</a></li>
-                <li><a class="nav-link text-white" href="about.html">Acerca de Nosotros</a></li>
-                <li><a class="nav-link text-white" href="contacto.html">Contacto</a></li>
-            </ul>
-            </nav>
+    <div id="barra-lateral">
+        <nav id class="d-flex w3-sidebar w3-bar-block w3-collapse w3-top text-white bg-dark p-3 navbar-nav" style="width: 330px;">
+            <!-- LOGO -->
+            <div>
+                <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-bottom"></i>
+                <a class="d-flex text-white text-decoration-none w3-display-topmiddle w3-padding-16" href="index.html"><img width="260" height="300" src="images/escudo.png" alt="CIBERDEFA-Logo"></a>
+                <div class="fs-4" style="padding-top: 300px;">Dirección de Ciberdefensa</div>
+                <hr>
+            </div>
+            <!-- MENU -->
+                <ul class="nav flex-column">
+                    <li><a class="nav-link w3-button w3-bar-item text-white" href="index.html">Inicio</a></li>
+                    <li><a class="nav-link w3-button w3-bar-item text-white" href="about.html">Acerca de Nosotros</a></li>
+                    <li><a class="nav-link w3-button w3-bar-item text-white" href="contacto.html">Contacto</a></li>
+                </ul>
+            <!-- USUARIO -->
             <hr>
             <div>
                 <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -32,16 +40,17 @@
                     <strong>Usuario</strong>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-                    <li><a class="dropdown-item" href="#">New project...</a></li>
-                    <li><a class="dropdown-item" href="#">Settings</a></li>
-                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                    <li><a class="dropdown-item" href="#">Nuevo Portal</a></li>
+                    <li><a class="dropdown-item" href="#">Configuración</a></li>
+                    <li><a class="dropdown-item" href="#">Perfil</a></li>
                     <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">Sign out</a></li>
+                    <li><a class="dropdown-item" href="#">Cerrar Sesión</a></li>
                 </ul>
             </div>
+            <!-- FOOTER -->
             <hr>
             <div class="text-white text-decoration-none">
-                <p><small></small>© 2021 Todos los derechos reservados.</p>
+                <p class=" "><small></small>© 2021 Todos los derechos reservados.</p>
                 <ul class="d-flex justify-content-center list-unstyled p-3">
                     <li><a href="link"><i class="bi mx-2 bi-facebook"></i></a></li>
                     <li><a href="link"><i class="bi mx-2 bi-twitter"></i></a></li>
@@ -49,87 +58,90 @@
                     <li><a href="link"><i class="bi mx-2 bi-linkedin"></i></a></li>
                 </ul>
             </div>
-        </aside>
+        </nav>
     </div>
-    <div class="b-example-divider sticky-top"></div>
-    <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style="width: auto;">
-        <h2>Nos Gusta lo que Hacemos</h2>    
-        <div class="list-group list-group-flush border-bottom scrollarea">
-                <div class="card">
-                    <img class="card-img-top" src="/bootstrap-themes/demo/images/card.png" alt="Card image cap">
-                    <div class="card-body">
-                        <h4 class="card-title">Card title</h4>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#!" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <img class="card-img-top" src="/bootstrap-themes/demo/images/card.png" alt="Card image cap">
-                    <div class="card-body">
-                        <h4 class="card-title">Card title</h4>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#!" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <img class="card-img-top" src="/bootstrap-themes/demo/images/card.png" alt="Card image cap">
-                    <div class="card-body">
-                        <h4 class="card-title">Card title</h4>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#!" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <img class="card-img-top" src="/bootstrap-themes/demo/images/card.png" alt="Card image cap">
-                    <div class="card-body">
-                        <h4 class="card-title">Card title</h4>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#!" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <img class="card-img-top" src="/bootstrap-themes/demo/images/card.png" alt="Card image cap">
-                    <div class="card-body">
-                        <h4 class="card-title">Card title</h4>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#!" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <img class="card-img-top" src="/bootstrap-themes/demo/images/card.png" alt="Card image cap">
-                    <div class="card-body">
-                        <h4 class="card-title">Card title</h4>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#!" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <img class="card-img-top" src="/bootstrap-themes/demo/images/card.png" alt="Card image cap">
-                    <div class="card-body">
-                        <h4 class="card-title">Card title</h4>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#!" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <img class="card-img-top" src="/bootstrap-themes/demo/images/card.png" alt="Card image cap">
-                    <div class="card-body">
-                        <h4 class="card-title">Card title</h4>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#!" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <img class="card-img-top" src="/bootstrap-themes/demo/images/card.png" alt="Card image cap">
-                    <div class="card-body">
-                        <h4 class="card-title">Card title</h4>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#!" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-        </div>
+    <div class=" w3-container d-flex w3-center w3-black w3-allerta d-flex w3-container w3-teal flex-column align-items-stretch flex-shrink-0 p-1" style="margin-left: 330px;">
+        Making the WEB!!!
     </div>
-    </div>
+    <!-- <div class="d-flex w3-container w3-teal flex-column align-items-stretch flex-shrink-0 bg-white" style="margin-left: 310px;">
+        <h2>NOS GUSTA LO QUE HACEMOS</h2>    
+        <div class="list-group list-group-flush border-bottom scrollarea"> -->
+            
+                <!-- <div class="card">
+                    <img class="card-img-top" src="/bootstrap-themes/demo/images/card.png" alt="Card image cap">
+                    <div class="card-body">
+                        <h4 class="card-title">Card title</h4>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#!" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-img-top" src="/bootstrap-themes/demo/images/card.png" alt="Card image cap">
+                    <div class="card-body">
+                        <h4 class="card-title">Card title</h4>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#!" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-img-top" src="/bootstrap-themes/demo/images/card.png" alt="Card image cap">
+                    <div class="card-body">
+                        <h4 class="card-title">Card title</h4>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#!" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-img-top" src="/bootstrap-themes/demo/images/card.png" alt="Card image cap">
+                    <div class="card-body">
+                        <h4 class="card-title">Card title</h4>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#!" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-img-top" src="/bootstrap-themes/demo/images/card.png" alt="Card image cap">
+                    <div class="card-body">
+                        <h4 class="card-title">Card title</h4>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#!" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-img-top" src="/bootstrap-themes/demo/images/card.png" alt="Card image cap">
+                    <div class="card-body">
+                        <h4 class="card-title">Card title</h4>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#!" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-img-top" src="/bootstrap-themes/demo/images/card.png" alt="Card image cap">
+                    <div class="card-body">
+                        <h4 class="card-title">Card title</h4>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#!" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-img-top" src="/bootstrap-themes/demo/images/card.png" alt="Card image cap">
+                    <div class="card-body">
+                        <h4 class="card-title">Card title</h4>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#!" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-img-top" src="/bootstrap-themes/demo/images/card.png" alt="Card image cap">
+                    <div class="card-body">
+                        <h4 class="card-title">Card title</h4>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#!" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+        </div> -->
+    <!-- </div>
+    </div> -->
     <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 
