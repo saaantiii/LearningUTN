@@ -16,3 +16,15 @@
 .scrollarea {
     overflow-y: auto;
 }
+
+.toggle-btn {
+    position: absolute;
+    margin-left: 350px;
+    top: 20px;
+    cursor: pointer;
+    font-size: 30px;
+}
+
+#mySidebar.active {
+    margin-left: -330px!important;
+}
