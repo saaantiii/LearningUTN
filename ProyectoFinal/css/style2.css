@@ -1,0 +1,33 @@
+.wrapper {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+}
+#sidebar {
+    min-width: 320px;
+    max-width: 320px;
+    min-height: 100vh;
+    transition: all 0.3s;
+    margin-left: -320px;
+}
+
+#sidebar.active {
+    margin-left: 0px;
+}
+
+.toggle-btn {
+    position: absolute;
+    margin-left: 350px;
+    top: 20px;
+    cursor: pointer;
+    font-size: 30px;
+}
+
+@media (max-width: 768px) {
+    #sidebar {
+        margin-left: 0px;
+    }
+    #sidebar.active {
+        margin-left: -320px;
+    }    
+}
