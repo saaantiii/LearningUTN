@@ -22,12 +22,12 @@
 }
 
 #content {
-    margin-left: 0px;
+    margin-left: 20px;
     transition: all 0.3s;
 }
 
 #content.active2 {
-    margin-left: 320px;
+    margin-left: 340px;
 }
 .toggle-btn {
     position: absolute;
@@ -50,5 +50,7 @@
     }
     #sidebar.active {
         margin-left: -320px;
-    }    
+    }
+    #content.active2 {
+        margin-left: 20px;
 }
