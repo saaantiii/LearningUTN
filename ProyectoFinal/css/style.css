@@ -26,5 +26,6 @@
 }
 
 #mySidebar.active {
-    margin-left: -330px!important;
+    margin-left: 0px!important;
 }
+

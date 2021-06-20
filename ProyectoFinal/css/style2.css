@@ -6,22 +6,43 @@
 #sidebar {
     min-width: 320px;
     max-width: 320px;
-    min-height: 100vh;
+    /* min-height: 100vh; */
+    position:fixed!important;
     transition: all 0.3s;
     margin-left: -320px;
+    height:100%;
+    
+    /* z-index:1; */
+    /* overflow:auto */
 }
 
 #sidebar.active {
     margin-left: 0px;
+    
 }
 
+#content {
+    margin-left: 0px;
+    transition: all 0.3s;
+}
+
+#content.active2 {
+    margin-left: 320px;
+}
 .toggle-btn {
     position: absolute;
-    margin-left: 350px;
-    top: 20px;
+    margin-left: 330px;
     cursor: pointer;
     font-size: 30px;
 }
+
+.line {
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px dashed #ddd;
+    margin: 40px 0;
+}
+
 
 @media (max-width: 768px) {
     #sidebar {
