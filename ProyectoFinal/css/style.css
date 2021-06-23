@@ -29,6 +29,12 @@
 #content.active2 {
     margin-left: 340px;
 }
+#background {
+    background-image: url(../images/pexels-pixabay-60504.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+}
+
 .toggle-btn {
     position: absolute;
     margin-left: 320px;
@@ -70,5 +76,8 @@
     }
     #content.active2 {
         margin-left: 20px;
+    }
+    #background {
+        background-position: -330px;
     }
 }
