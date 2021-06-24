@@ -33,6 +33,7 @@
     background-image: url(../images/pexels-pixabay-60504.jpg);
     background-size: cover;
     background-attachment: fixed;
+    background-position: center;
 }
 
 .toggle-btn {
@@ -78,6 +79,6 @@
         margin-left: 20px;
     }
     #background {
-        background-position: -330px;
+        background-position: center;
     }
 }

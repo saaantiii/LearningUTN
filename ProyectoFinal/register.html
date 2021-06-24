@@ -16,26 +16,32 @@
         <div class="login-form text-white" style="background-color:transparent; border: solid white;">
             <form>
                 <h3 class="fw-light">
-                    Pagina de LOGIN
+                    Pagina de Registro
                     <i class="bi bi-person-check"></i>
                 </h3>
                 <div>
-                    <label for="email">Usuario o Email</label>
-                    <input type="text" class="form-control" name="email" id="email" placeholder="email@email.com">
+                    <label for="name">Nombre</label>
+                    <input type="text" class="form-control" name="name" id="name" placeholder="" required>
+                </div>
+                <div>
+                    <label for="surname">Apellido</label>
+                    <input type="text" class="form-control" name="surname" id="surname" placeholder="" required>
+                </div>
+                <div>
+                    <label for="email">email</label>
+                    <input type="text" class="form-control" name="email" id="email" placeholder="email@email.com" required>
+                </div>
+                <div>
+                    <label for="user">Usuario</label>
+                    <input type="text" class="form-control" name="user" id="user" placeholder="" required>
                 </div>
                 <div>
                     <label for="password">Contraseña</label>
-                    <input type="password" class="form-control" name="password" id="email" placeholder="**************">
+                    <input type="password" class="form-control" name="password" id="email" placeholder="**************" required>
                 </div>
-                <div id="recuerdame">
-                    <input class="form-check-input" type="checkbox" name="recuerdame" id="recuerdame">
-                    <label class="form-check-label" for="recuerdame">Recuerdame</label>
-                </div>
+                <div id="error"></div>
                 <div>
-                    <button class="btn btn-primary my-buttom">
-                        Ingresar
-                    </button>
-                    <button class="btn btn-primary my-buttom">
+                    <button class="btn btn-primary my-buttom mt-2">
                         Registrarse
                     </button>
                 </div>
