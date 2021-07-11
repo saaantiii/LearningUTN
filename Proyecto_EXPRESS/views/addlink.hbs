@@ -1,0 +1,40 @@
+<div id="content" class="p-5 text-white active2">
+    <div>
+        <h4 class="mb-3 text-center">Agregar Link de Acceso</h4>
+    </div>
+    <form action="/panel" method="POST" class="row g-3">
+        <div class="col-12">
+            <label for="sitename" class="form-label">Nombre del Sitio*</label>
+            <input type="text" class="form-control" name="sitename" id="sitename" required>
+        </div>
+        <div class="col-12">
+            <label for="url" class="form-label">URL*</label>
+            <input type="text" class="form-control" name="url" id="url" placeholder="Incluir Protocolo (http:// o https://)" required>
+        </div>
+        <div class="col-12">
+            <label for="texto" class="form-label">Descripción</label>
+            <div class="form-group col-12">
+                <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-pencil-square-o"></i></span>
+                <div class="col-12">
+                    <textarea class="form-control text-white" style="background-color:transparent;" id="description" name="description" placeholder="Escriba aquí la Descripción" rows="7" ></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <input type="submit" class="w-100 btn btn-outline-light btn-lg" value="Agregar">
+        </div>
+    </form>
+</div>
+{{#if " alert != 'undefined' " }}
+    <script>
+        Swal.fire({
+            title: '{{alertTitle}}',
+            text: '{{alertMessage}}',
+            icon: '{{alertIcon}}',
+            showConfirmButton: {{showConfirmButton}},
+            timer: {{timer}}
+        }).then(() => {
+                window.location = '/{{ruta}}'
+            })
+    </script>
+{{/if}}

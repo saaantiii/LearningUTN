@@ -1,0 +1,35 @@
+<div id="content" class="p-5 text-white active2">
+    <div>
+        <h4 class="mb-3 text-center">Formulario de Contacto</h4>
+    </div>
+    <form class="row g-3">
+        <div class="col-md-6">
+            <label for="firstName" class="form-label">Nombre*</label>
+            <input type="text" class="form-control" id="firstName" required>
+        </div>
+        <div class="col-md-6">
+            <label for="firstName" class="form-label">Apellido*</label>
+            <input type="text" class="form-control" id="firstName" required>
+        </div>
+        <div class="col-12">
+            <label for="email" class="form-label">Email*</label>
+            <input type="email" class="form-control" id="email" placeholder="email@ejemplo.com" required>
+        </div>
+        <div class="col-12">
+            <label for="telefono" class="form-label">Telefono de Contacto</label>
+            <input type="text" class="form-control" id="telefono" placeholder="+54 9 11 12345678" required="">
+        </div>
+        <div class="col-12">
+            <label for="texto" class="form-label">Texto</label>
+            <div class="form-group col-12">
+                <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-pencil-square-o"></i></span>
+                <div class="col-12">
+                    <textarea class="form-control text-white" style="background-color:transparent;" id="message" name="message" placeholder="Escriba aquí el texto adjuntado." rows="7" ></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <button class="w-100 btn btn-outline-light btn-lg" type="submit">Enviar</button>
+        </div>
+    </form>
+</div>
