@@ -2,29 +2,29 @@
     <div>
         <h4 class="mb-3 text-center">Formulario de Contacto</h4>
     </div>
-    <form class="row g-3">
+    <form action="/send" method="POST" class="row g-3">
         <div class="col-md-6">
-            <label for="firstName" class="form-label">Nombre*</label>
-            <input type="text" class="form-control" id="firstName" required>
+            <label for="nombre" class="form-label">Nombre*</label>
+            <input type="text" name="nombre" class="form-control" id="nombre" required>
         </div>
         <div class="col-md-6">
-            <label for="firstName" class="form-label">Apellido*</label>
-            <input type="text" class="form-control" id="firstName" required>
+            <label for="apellido" class="form-label">Apellido*</label>
+            <input type="text" name="apellido" class="form-control" id="apellido" required>
         </div>
         <div class="col-12">
             <label for="email" class="form-label">Email*</label>
-            <input type="email" class="form-control" id="email" placeholder="email@ejemplo.com" required>
+            <input type="email" name="email" class="form-control" id="email" placeholder="email@ejemplo.com" required>
         </div>
         <div class="col-12">
             <label for="telefono" class="form-label">Telefono de Contacto</label>
-            <input type="text" class="form-control" id="telefono" placeholder="+54 9 11 12345678" required="">
+            <input type="text" name="telefono" class="form-control" id="telefono" placeholder="+54 9 11 12345678" required="">
         </div>
         <div class="col-12">
             <label for="texto" class="form-label">Texto</label>
             <div class="form-group col-12">
                 <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-pencil-square-o"></i></span>
                 <div class="col-12">
-                    <textarea class="form-control text-white" style="background-color:transparent;" id="message" name="message" placeholder="Escriba aquí el texto adjuntado." rows="7" ></textarea>
+                    <textarea name="texto" class="form-control text-white" style="background-color:transparent;" id="texto" name="message" placeholder="Escriba aquí el texto adjuntado." rows="7" ></textarea>
                 </div>
             </div>
         </div>
@@ -33,3 +33,18 @@
         </div>
     </form>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+{{#if " alert != 'undefined' " }}
+    <script>
+        Swal.fire({
+            title: '{{alertTitle}}',
+            text: '{{alertMessage}}',
+            icon: '{{alertIcon}}',
+            showConfirmButton: {{showConfirmButton}},
+            timer: {{timer}}
+        }).then(() => {
+                window.location = '/{{ruta}}'
+            })
+    </script>
+{{/if}}

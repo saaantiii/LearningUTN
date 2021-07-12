@@ -3,11 +3,11 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
-/* var logger = require('morgan'); */
 var hbs = require('express-handlebars');
 var bcrypt = require('bcrypt')
 const session = require('express-session');
 var app = express();
+var nodemailer = require('nodemailer')
 
 
 //2-Capturar datos formulario
@@ -27,12 +27,6 @@ connection.connect((error) => {
   console.log('Base de Datos Conectada');
 });
 
-/* var indexRouter = require('./routes/index');
-var aboutRouter = require('./routes/about');
-var addlinkRouter = require('./routes/addlink');
-var contactRouter = require('./routes/contact');
-var loginRouter = require('./routes/login');
-var registerRouter = require('./routes/register') */
 
 app.use(session({
   secret: 'secret',
@@ -51,16 +45,8 @@ app.engine('hbs', hbs({
 }));
 
 
-
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
-/* app.use('/', loginRouter);
-app.use('/index', indexRouter);
-app.use('/about', aboutRouter);
-app.use('/addlink', addlinkRouter);
-app.use('/contact', contactRouter);
-app.use('/register', registerRouter); */
 
 //establecemos rutas
 app.get('/', function (req, res, next) {
@@ -71,12 +57,24 @@ app.get('/register', function (req, res, next) {
   res.render('register', { layout: 'layout' })
 });
 
-/* app.get('/index', function(req, res, next) {
-  res.render('index', { title: 'Portal Ciberdefensa' })
-}); */
-
 app.get('/contact', function (req, res, next) {
-  res.render('contact', { title: 'Portal Ciberdefensa' })
+  if (req.session.loggedIn) {
+    return res.render('contact', {
+      layout: 'layout2.hbs', title: 'Portal Ciberdefensa',
+      name: req.session.name,
+      surname: req.session.surname
+    });
+  } else {
+    return res.render('contact', {
+      alert: true,
+      alertTitle: "Información",
+      alertMessage: "¡Por favor debe iniciar sesión!",
+      alertIcon: 'info',
+      showConfirmButton: true,
+      timer: false,
+      ruta: ''
+    });
+  }
 });
 
 app.get('/addlink', function (req, res, next) {
@@ -87,7 +85,7 @@ app.get('/addlink', function (req, res, next) {
       surname: req.session.surname
     });
   } else {
-    return res.render('/addlink', {
+    return res.render('addlink', {
       alert: true,
       alertTitle: "Información",
       alertMessage: "¡Por favor debe iniciar sesión!",
@@ -100,7 +98,23 @@ app.get('/addlink', function (req, res, next) {
 });
 
 app.get('/about', function (req, res, next) {
-  res.render('about', { title: 'Portal Ciberdefensa' })
+  if (req.session.loggedIn) {
+    return res.render('about', {
+      layout: 'layout2.hbs', title: 'Portal Ciberdefensa',
+      name: req.session.name,
+      surname: req.session.surname
+    });
+  } else {
+    return res.render('about', {
+      alert: true,
+      alertTitle: "Información",
+      alertMessage: "¡Por favor debe iniciar sesión!",
+      alertIcon: 'info',
+      showConfirmButton: true,
+      timer: false,
+      ruta: ''
+    });
+  }
 });
 
 //REGISTRO
@@ -111,7 +125,7 @@ app.post('/register', async (req, res) => {
   const username = req.body.username;
   const password = req.body.password;
   let passwordHash = await bcrypt.hash(password, 8);
-  conection.query('INSERT INTO usertable SET ?', { name: name, surname: surname, email: email, username: username, password: passwordHash }, async (error, results) => {
+  connection.query('INSERT INTO usertable SET ?', { name: name, surname: surname, email: email, username: username, password: passwordHash }, async (error, results) => {
     if (error) {
       res.render('register', {
         layout: 'layout',
@@ -187,31 +201,36 @@ app.post('/auth', async (req, res) => {
   };
 });
 
-/* app.get('/index', function(req, res, next) {
-  res.render('index', { title: 'Portal Ciberdefensa' })
-}); */
 
 //CONTROL DE LOGEO
-app.get('/index', function (req, res, next) {
+app.get('/index', function (req, res) {
   console.log(req.session.loggedIn);
   console.log(req.session.name, req.session.surname, req.session.userID);
-  if (req.session.loggedIn) {
+  if (req.session.loggedIn) { //CONTROL DE LOGGEO
+    connection.query('SELECT * FROM linkstable WHERE userTable_userID=?', [req.session.userID], function (err, results, fields) { //BUSCAMOS TODOS LOS LINKS DE LA BASE DE DATOS
+      if (err) { throw err; }
+      else {
+        var links = results;
+        console.log(results, links);
+      };
     return res.render('index', {
       layout: 'layout2.hbs', title: 'Portal Ciberdefensa',
       name: req.session.name,
-      surname: req.session.surname
+      surname: req.session.surname,
+      links: links,
     });
+  });
   } else {
-    return res.render('', {
-      alert: true,
-      alertTitle: "Información",
-      alertMessage: "¡Por favor debe iniciar sesión!",
-      alertIcon: 'info',
-      showConfirmButton: true,
-      timer: false,
-      ruta: ''
-    });
-  }
+  return res.render('', {
+    alert: true,
+    alertTitle: "Información",
+    alertMessage: "¡Por favor debe iniciar sesión!",
+    alertIcon: 'info',
+    showConfirmButton: true,
+    timer: false,
+    ruta: ''
+  });
+}
 });
 
 //Añadir Panel
@@ -223,31 +242,86 @@ app.post('/panel', async (req, res) => {
   console.log(sitename, direccion, description, userID);
   connection.query('INSERT INTO linkstable (URL, description, sitename, userTable_userID) VALUES (?,?,?,?)', [direccion, description, sitename, userID], async (error, results) => {
     if (error) {
-      console.log(error),
-      res.render('addlink', {
+      console.log(error);
+      return res.render('addlink', {
         layout: 'layout2.hbs',
+        name: req.session.name,
+        surname: req.session.surname,
         alert: true,
         alertTitle: "No se puede registrar el LINK",
         alertMessage: "Error",
         alertIcon: 'warning',
         showConfirmButton: true,
         timer: false,
-        ruta: 'addlink'
+        ruta: 'index'
       });
     } else {
-      res.render('addlink', {
+      return res.render('addlink', {
         layout: 'layout2.hbs',
+        name: req.session.name,
+        surname: req.session.surname,
         alert: true,
         alertTitle: "Registro",
         alertMessage: "¡Registro Exitoso!",
         alertIcon: 'success',
         showConfirmButton: false,
-        timer: 10000,
+        timer: 5000,
         ruta: 'index'
       });
     }
   });
 });
+
+//eliminar panel
+app.get('/delete/:id', function (req, res) {
+  const { id } = req.params;
+  connection.query('DELETE FROM linkstable WHERE idlink = ?', [id]);
+  res.redirect('/index');
+});
+
+//enviar mail
+app.post('/send', function (req, res) {
+  let nombreForm, apellidoForm, emailForm, telefonoForm, textoForm;
+  nombreForm = req.body.nombre;
+  apellidoForm = req.body.apellido;
+  emailForm = req.body.email;
+  telefonoForm = req.body.telefono;
+  textoForm = req.body.texto;
+  const transporter = nodemailer.createTransport({
+    host: 'smtp.ethereal.email',
+    port: 587,
+    secure: false,
+    auth: {
+        user: 'alec.trantow81@ethereal.email',
+        pass: 'S3CE75WPR5SX71zxsZ'
+    },
+    tls: {
+      rejectUnauthorized: false
+    },
+  });
+  var mailForm = {
+    from: `${nombreForm} ${apellidoForm} <${emailForm}>`,
+    to: "santiagosarchetti@gmail.com",
+    subject: "Nuevo Contacto",
+    text: `${textoForm}`
+  };
+  transporter.sendMail(mailForm, (error, info) => {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log("Email enviado");
+      return res.render('contact', {
+        alert: true,
+        alertTitle: "Información",
+        alertMessage: "¡Formulario de Contacto Enviado!",
+        alertIcon: 'info',
+        showConfirmButton: true,
+        timer: 5000,
+        ruta: 'index'
+      });
+    }
+  });
+})
 
 
 app.get('/logout', (req, res) => {
@@ -256,19 +330,19 @@ app.get('/logout', (req, res) => {
   })
 });
 
-  // error handler
-  app.use(function (err, req, res, next) {
-    // set locals, only providing error in development
-    res.locals.message = err.message;
-    res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-    // render the error page
-    res.status(err.status || 500);
-    res.render('error');
-  });
+// error handler
+app.use(function (err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error');
+});
 
-  // catch 404 and forward to error handler
-  app.use(function (req, res, next) {
-    next(createError(404));
-  });
-  module.exports = app;
+// catch 404 and forward to error handler
+app.use(function (req, res, next) {
+  next(createError(404));
+});
+module.exports = app;
