@@ -273,9 +273,9 @@ app.post('/panel', async (req, res) => {
 });
 
 //eliminar panel
-app.get('/delete/:id', function (req, res) {
-  const { id } = req.params;
-  connection.query('DELETE FROM linkstable WHERE idlink = ?', [id]);
+app.get('/delete/:idlink', function (req, res) {
+  const {idlink} = req.params;
+  connection.query('DELETE FROM linkstable WHERE idlink = ?', [idlink]);
   res.redirect('/index');
 });
 
